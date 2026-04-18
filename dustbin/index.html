@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>垃圾分类小挑战</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="hud" aria-label="游戏信息">
+        <div class="brand">
+          <p class="eyebrow">儿童环保游戏</p>
+          <h1>垃圾分类小挑战</h1>
+        </div>
+        <div class="hud-right">
+          <div class="stats">
+            <div class="stat">
+              <span class="label">得分</span>
+              <strong id="score">0</strong>
+            </div>
+            <div class="stat">
+              <span class="label">剩余时间</span>
+              <strong id="timeLeft">120s</strong>
+            </div>
+          </div>
+          <button id="controlBtn" class="control-btn" aria-label="开始游戏">开始游戏</button>
+        </div>
+      </section>
+
+      <section class="playground" aria-label="游戏区域">
+        <div class="sky"></div>
+        <div class="cloud cloud-a"></div>
+        <div class="cloud cloud-b"></div>
+
+        <div class="hint">
+          <span>看清垃圾类型</span>
+          <span>鼠标点击或按 1/2/3/4 选择</span>
+        </div>
+
+        <div class="item-card" id="itemCard" aria-live="polite">
+          <div class="item-icon" id="itemIcon">🧃</div>
+          <div class="item-name" id="itemName">饮料瓶</div>
+          <div class="item-category" id="itemCategory">可回收物</div>
+        </div>
+
+        <div class="message" id="message" role="status">准备开始</div>
+
+        <div class="bin-row" aria-label="垃圾桶选择区">
+          <button class="bin recyclable" data-category="recyclable" data-key="1" aria-label="可回收物垃圾桶，按 1 键选择">
+            <span class="bin-icon">♻️</span>
+            <span class="bin-key">1</span>
+            <span class="bin-name">可回收物</span>
+            <span class="bin-tip">纸张 / 塑料 / 金属</span>
+          </button>
+          <button class="bin kitchen" data-category="kitchen" data-key="2" aria-label="厨余垃圾桶，按 2 键选择">
+            <span class="bin-icon">🍎</span>
+            <span class="bin-key">2</span>
+            <span class="bin-name">厨余垃圾</span>
+            <span class="bin-tip">果皮 / 剩饭 / 菜叶</span>
+          </button>
+          <button class="bin hazardous" data-category="hazardous" data-key="3" aria-label="有害垃圾桶，按 3 键选择">
+            <span class="bin-icon">☠️</span>
+            <span class="bin-key">3</span>
+            <span class="bin-name">有害垃圾</span>
+            <span class="bin-tip">电池 / 灯管 / 药品</span>
+          </button>
+          <button class="bin other" data-category="other" data-key="4" aria-label="其他垃圾桶，按 4 键选择">
+            <span class="bin-icon">🗑️</span>
+            <span class="bin-key">4</span>
+            <span class="bin-name">其他垃圾</span>
+            <span class="bin-tip">纸巾 / 口罩 / 破陶瓷</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="rules">
+        <div class="rule-card">
+          <strong>玩法</strong>
+          <p>垃圾会从上方慢慢落下。你要在 120 秒内，点击下方正确的垃圾桶，也可以直接按数字键 1/2/3/4。答对加 1 分，答错不加分。</p>
+        </div>
+      </section>
+    </main>
+
+    <div class="overlay" id="overlay" hidden>
+      <div class="overlay-card">
+        <p class="overlay-title">时间到！</p>
+        <p class="overlay-score">最终得分：<strong id="finalScore">0</strong></p>
+        <div class="mistakes-section" id="mistakesSection">
+          <p class="mistakes-title">本局答错回顾</p>
+          <ul class="mistakes-list" id="mistakesList"></ul>
+        </div>
+        <button id="restartBtn" class="restart-btn">再玩一次</button>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

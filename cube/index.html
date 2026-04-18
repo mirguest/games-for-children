@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>魔方游戏</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="app-shell">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Web Rubik's Cube</p>
+          <h1>魔方游戏</h1>
+          <p class="subtitle">
+            这是一个纯网页版魔方。支持打乱、重置、撤销，以及基础键盘操作。
+          </p>
+        </div>
+
+        <div class="score-card">
+          <span class="score-label">当前状态</span>
+          <strong id="statusText">已复原</strong>
+          <span id="moveCount" class="move-count">0 步</span>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <div class="stage">
+          <div class="stage-frame">
+            <div id="cubeScene" class="cube-scene" aria-label="魔方展示区">
+              <div id="cube" class="cube" aria-live="polite"></div>
+            </div>
+          </div>
+          <p class="hint">
+            键盘：<kbd>U</kbd> <kbd>D</kbd> <kbd>L</kbd> <kbd>R</kbd> <kbd>F</kbd> <kbd>B</kbd>
+            切换面，按住 <kbd>Shift</kbd> 反向旋转。
+            鼠标或手指拖动魔方，可以从不同角度观察。
+          </p>
+        </div>
+
+        <aside class="panel">
+          <div class="panel-block">
+            <h2>操作</h2>
+            <div class="action-grid">
+              <button data-action="scramble" class="primary">打乱</button>
+              <button data-action="reset">重置</button>
+              <button data-action="undo">撤销</button>
+            </div>
+          </div>
+
+          <div class="panel-block">
+            <h2>视角控制</h2>
+            <div class="view-grid">
+              <label class="view-field">
+                <span>theta</span>
+                <div class="view-input-row">
+                  <input id="thetaRange" type="range" min="0" max="360" step="1" />
+                  <input id="thetaNumber" type="number" min="0" max="360" step="1" />
+                </div>
+              </label>
+              <label class="view-field">
+                <span>phi</span>
+                <div class="view-input-row">
+                  <input id="phiRange" type="range" min="-85" max="85" step="1" />
+                  <input id="phiNumber" type="number" min="-85" max="85" step="1" />
+                </div>
+              </label>
+              <div class="view-actions">
+                <button data-action="viewReset">回正视角</button>
+                <button data-action="viewTop">顶部视角</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel-block">
+            <h2>面转动</h2>
+            <div class="move-grid" id="moveButtons"></div>
+          </div>
+
+          <div class="panel-block">
+            <h2>说明</h2>
+            <ul class="notes">
+              <li>这个版本是可玩的魔方逻辑，不是纯装饰图。</li>
+              <li>打乱后可以通过按钮或键盘继续操作。</li>
+              <li>如果你要更像真实 3D 的拖拽版本，我可以继续升级。</li>
+            </ul>
+          </div>
+
+          <div class="panel-block">
+            <h2>新手教程</h2>
+            <details class="tutorial" open>
+              <summary>完全不会也能学的 5 步复原法</summary>
+              <div class="tutorial-body">
+                <p>
+                  先记住一件事：魔方不是靠“猜”，而是按照固定顺序一层一层搭回来。
+                </p>
+
+                <ol class="tutorial-steps">
+                  <li>
+                    <strong>先认识颜色</strong>
+                    <span>把魔方六个颜色先看一遍，找到你最想当“起始面”的颜色，通常选白色。</span>
+                  </li>
+                  <li>
+                    <strong>做白色十字</strong>
+                    <span>先把白色的四条边拼在一起，像一朵小花的花瓣伸出来。</span>
+                  </li>
+                  <li>
+                    <strong>补白色角块</strong>
+                    <span>把四个白角放好，白色这一层就完整了。</span>
+                  </li>
+                  <li>
+                    <strong>完成中间层</strong>
+                    <span>把第二层四条边放进去，这一层不碰到黄色面。</span>
+                  </li>
+                  <li>
+                    <strong>最后复原黄色面</strong>
+                    <span>先做黄色十字，再把角块放对位置，最后把角块转正确。</span>
+                  </li>
+                </ol>
+
+                <p class="tutorial-tip">
+                  小朋友最重要的是先学会“看位置”，再学“转动”。不要一开始追求速度。
+                </p>
+              </div>
+            </details>
+
+            <details class="tutorial">
+              <summary>最基础的记号怎么读</summary>
+              <div class="tutorial-body">
+                <ul class="tutorial-list">
+                  <li><strong>U</strong>：上面一层转动</li>
+                  <li><strong>D</strong>：下面一层转动</li>
+                  <li><strong>L</strong>：左边一层转动</li>
+                  <li><strong>R</strong>：右边一层转动</li>
+                  <li><strong>F</strong>：前面一层转动</li>
+                  <li><strong>B</strong>：后面一层转动</li>
+                </ul>
+                <p class="tutorial-tip">
+                  例如按一次 <strong>R</strong>，就是右边转一下；按 <kbd>Shift</kbd> + <strong>R</strong>，就是反方向转。
+                </p>
+              </div>
+            </details>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
