@@ -137,13 +137,33 @@ function handleRecognizeChoice(name) {
 
 function buildMixTargets() {
   const unique = new Map();
-  Object.values(MIX_RULES).forEach((value) => {
+  Object.entries(MIX_RULES).forEach(([key, value]) => {
+    const [left, right] = key.split("+");
+    if (left === right) return;
     unique.set(value.name, value);
   });
   return [...unique.values()];
 }
 
 const MIX_TARGETS = buildMixTargets();
+
+function findMixAnswers(targetName) {
+  const baseOrder = new Map(MIX_BASE.map((color, index) => [color.name, index]));
+  const unique = new Map();
+
+  Object.entries(MIX_RULES).forEach(([key, value]) => {
+    if (value.name !== targetName) return;
+
+    const [left, right] = key.split("+");
+    if (left === right) return;
+    const pair = [left, right].sort(
+      (a, b) => (baseOrder.get(a) ?? 999) - (baseOrder.get(b) ?? 999)
+    );
+    unique.set(pair.join("+"), pair);
+  });
+
+  return [...unique.values()].map(([left, right]) => `${left} + ${right}`);
+}
 
 function nextMixQuestion() {
   state.mix.target = randomPick(MIX_TARGETS);
@@ -199,7 +219,13 @@ function checkMixAnswer() {
       "ok"
     );
   } else {
-    setFeedback(mixFeedback, "这次不对，再试试不同组合。", "error");
+    const answers = findMixAnswers(state.mix.target.name);
+    const answerText = answers.length ? answers.join(" 或 ") : "暂无答案";
+    setFeedback(
+      mixFeedback,
+      `这次不对。正确答案：${answerText} = ${state.mix.target.name}`,
+      "error"
+    );
   }
 }
 
