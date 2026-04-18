@@ -495,6 +495,31 @@
       font-size: 0.92rem;
     }
 
+    .back-home {
+      margin: 14px 0 0;
+      text-align: center;
+    }
+
+    .back-home a {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: #ffffffcc;
+      border: 1px solid #ffffff;
+      box-shadow: 0 8px 18px rgba(23, 64, 103, 0.12);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 120ms ease, filter 120ms ease;
+    }
+
+    .back-home a:hover,
+    .back-home a:focus-visible {
+      transform: translateY(-2px);
+      filter: brightness(1.02);
+      outline: none;
+    }
+
     @keyframes spin {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
@@ -598,6 +623,8 @@
           <p class="legend">风速变化会让叶片旋转更快，风线动画也会更快。</p>
         </aside>
       </div>
+
+      <p class="back-home"><a href="../">返回游戏首页</a></p>
     </section>
   </main>
 

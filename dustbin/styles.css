@@ -346,6 +346,31 @@ body {
   grid-template-columns: 1fr;
 }
 
+.back-home {
+  margin: 14px 0 0;
+  text-align: center;
+}
+
+.back-home a {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 11px 16px;
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 22px rgba(39, 68, 94, 0.12);
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.back-home a:hover,
+.back-home a:focus-visible {
+  transform: translateY(-2px);
+  filter: brightness(1.02);
+  outline: none;
+}
+
 .rule-card {
   padding: 16px 18px;
   border-radius: 20px;

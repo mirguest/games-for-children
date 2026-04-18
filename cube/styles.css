@@ -421,6 +421,30 @@ button.primary {
   color: var(--muted);
 }
 
+.back-home {
+  margin: 1rem 0 0;
+  text-align: center;
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.back-home a:hover,
+.back-home a:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(77, 208, 255, 0.38);
+  background: rgba(255, 255, 255, 0.13);
+  outline: none;
+}
+
 kbd {
   display: inline-block;
   min-width: 1.8rem;
