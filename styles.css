@@ -128,6 +128,10 @@ h1 {
   animation-delay: 180ms;
 }
 
+.game-card:nth-child(4) {
+  animation-delay: 270ms;
+}
+
 .game-card:hover,
 .game-card:focus-visible {
   transform: translateY(-6px);
@@ -179,6 +183,14 @@ h2 {
 
 .fan .enter {
   color: #2157cb;
+}
+
+.palette {
+  background: linear-gradient(165deg, #fff0f8 0%, #ffe7c8 100%);
+}
+
+.palette .enter {
+  color: #9a3f00;
 }
 
 @keyframes rise {

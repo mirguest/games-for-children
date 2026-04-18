@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>调色板游戏</title>
+    <meta
+      name="description"
+      content="儿童调色板游戏：通过颜色识别和颜色混合挑战认识颜色知识。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-blob blob-a"></div>
+    <div class="bg-blob blob-b"></div>
+    <div class="bg-blob blob-c"></div>
+
+    <main class="app-shell">
+      <header class="hero">
+        <p class="hero-badge">Color Lab</p>
+        <h1>调色板游戏</h1>
+        <p class="hero-subtitle">认识颜色、学习混色，让你变成小小配色师。</p>
+      </header>
+
+      <section class="panel" aria-labelledby="recognizeTitle">
+        <div class="panel-head">
+          <h2 id="recognizeTitle">颜色识别挑战</h2>
+          <p>看颜色块，选出正确的颜色名字。</p>
+        </div>
+
+        <div class="recognize-layout">
+          <div class="target-box" id="recognizeSwatch" aria-label="当前颜色"></div>
+
+          <div class="recognize-main">
+            <p class="question" id="recognizeQuestion">这个颜色叫什么名字？</p>
+            <div id="recognizeOptions" class="option-grid" role="group" aria-label="颜色选项"></div>
+            <p class="feedback" id="recognizeFeedback" aria-live="polite"></p>
+          </div>
+
+          <aside class="score-card">
+            <h3>识别得分</h3>
+            <p><span id="recognizeScore">0</span> 分</p>
+            <button id="recognizeNext" class="btn secondary">下一题</button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="mixTitle">
+        <div class="panel-head">
+          <h2 id="mixTitle">颜色混合挑战</h2>
+          <p>根据目标颜色，选择两个基础颜色进行调配。</p>
+        </div>
+
+        <div class="mix-layout">
+          <div class="mix-target">
+            <p class="mix-label">目标颜色</p>
+            <div id="mixTargetSwatch" class="target-box"></div>
+            <p id="mixTargetName" class="mix-name"></p>
+          </div>
+
+          <div class="mix-controls">
+            <p class="mix-label">选择 2 种颜色</p>
+            <div id="mixOptions" class="mix-option-grid" role="group" aria-label="混色选项"></div>
+            <div class="mix-actions">
+              <button id="mixCheck" class="btn primary">检查答案</button>
+              <button id="mixReset" class="btn secondary">下一题</button>
+            </div>
+            <p id="mixFeedback" class="feedback" aria-live="polite"></p>
+          </div>
+
+          <aside class="score-card">
+            <h3>混色得分</h3>
+            <p><span id="mixScore">0</span> 分</p>
+            <p class="tiny">提示：例如 红 + 黄 = 橙</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="freeMixTitle">
+        <div class="panel-head">
+          <h2 id="freeMixTitle">自由调色实验台</h2>
+          <p>任选两种颜色，观察混合后的变化。</p>
+        </div>
+
+        <div class="lab-layout">
+          <label class="picker-field">
+            <span>颜色 A</span>
+            <input id="freeColorA" type="color" value="#ff4d4d" />
+          </label>
+          <label class="picker-field">
+            <span>颜色 B</span>
+            <input id="freeColorB" type="color" value="#3d7eff" />
+          </label>
+
+          <div class="swatch-group" aria-label="颜色预览">
+            <div>
+              <p>A</p>
+              <div id="freeSwatchA" class="small-swatch"></div>
+            </div>
+            <div>
+              <p>B</p>
+              <div id="freeSwatchB" class="small-swatch"></div>
+            </div>
+            <div>
+              <p>混合</p>
+              <div id="freeSwatchMix" class="small-swatch"></div>
+            </div>
+          </div>
+
+          <p class="mix-code" id="freeMixCode"></p>
+        </div>
+      </section>
+
+      <p class="back-home"><a href="../">返回游戏首页</a></p>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
