@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>儿童游戏乐园导航</title>
+    <meta
+      name="description"
+      content="儿童游戏乐园导航页，点击卡片进入魔方游戏、垃圾分类挑战和电风扇模拟器。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-shape shape-a"></div>
+    <div class="bg-shape shape-b"></div>
+    <div class="bg-shape shape-c"></div>
+
+    <main class="shell">
+      <header class="hero">
+        <p class="hero-badge">Kids Game Hub</p>
+        <h1>儿童游戏乐园</h1>
+        <p class="hero-subtitle">选择你今天想玩的小游戏，点开卡片马上开始。</p>
+      </header>
+
+      <section class="card-grid" aria-label="游戏导航卡片">
+        <a class="game-card cube" href="./cube/" aria-label="进入魔方游戏">
+          <div class="emoji" aria-hidden="true">🧩</div>
+          <h2>魔方游戏</h2>
+          <p>转动立体魔方，尝试用更少步数还原颜色。</p>
+          <span class="enter">点击进入</span>
+        </a>
+
+        <a class="game-card dustbin" href="./dustbin/" aria-label="进入垃圾分类小挑战">
+          <div class="emoji" aria-hidden="true">♻️</div>
+          <h2>垃圾分类小挑战</h2>
+          <p>看图识别垃圾，训练环保知识和反应速度。</p>
+          <span class="enter">点击进入</span>
+        </a>
+
+        <a class="game-card fan" href="./electric-fan/" aria-label="进入儿童电风扇模拟器">
+          <div class="emoji" aria-hidden="true">🌀</div>
+          <h2>儿童电风扇模拟器</h2>
+          <p>体验风速和模式变化，观察扇叶转动效果。</p>
+          <span class="enter">点击进入</span>
+        </a>
+      </section>
+    </main>
+  </body>
+</html>
